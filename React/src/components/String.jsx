@@ -4,20 +4,19 @@ import React, { useRef } from "react";
 
 const String = () => {
   const ref = useRef();
+  const pathRef = useRef();
 
   useGSAP(() => {
     const finalPath = `M 10 150 Q 500 150 980 150`;
 
     const handleMouseMove = (e) => {
       const bounds = ref.current.getBoundingClientRect();
-      console.log(bounds);
-      
       const x = e.clientX - bounds.left;
       const y = e.clientY - bounds.top;
 
       const path = `M 10 150 Q ${x} ${y} 980 150`;
 
-      gsap.to("svg path", {
+      gsap.to(pathRef.current, {
         attr: { d: path, stroke: "rgb(135, 197, 36)" },
         duration: 0.3,
         ease: "power3.out",
@@ -25,7 +24,7 @@ const String = () => {
     };
 
     const handleMouseLeave = () => {
-      gsap.to("svg path", {
+      gsap.to(pathRef.current, {
         attr: { d: finalPath, stroke: "black" },
         duration: 1.5,
         ease: "elastic.out(1, 0.2)",
@@ -54,6 +53,7 @@ const String = () => {
         xmlns="http://www.w3.org/2000/svg"
       >
         <path
+          ref={pathRef}
           d="M 10 150 Q 500 150 980 150"
           stroke="black"
           strokeWidth="2"
