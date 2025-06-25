@@ -6,6 +6,7 @@ import Cards from "./components/Cards";
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 import String from "./components/String";
+import ThingsHappen from "./components/ThingsHappen";
 
 const App = () => {
   useGSAP(() => {
@@ -23,7 +24,7 @@ const App = () => {
   });
   return (
     <>
-      <main className="w-full h-full bg-[#e7e7e7] overflow-x-hidden">
+      <main className="w-full h-full bg-[#e7e7e7] overflow-hidden">
         <svg
           id="follower"
           className="fixed top-0 left-0 z-[9999] pointer-events-none"
@@ -45,6 +46,7 @@ const App = () => {
         <Services />
         <Cards />
         <String/>
+        <ThingsHappen/>
       </main>
     </>
   );
